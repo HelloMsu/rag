@@ -4,20 +4,20 @@ import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { useState } from "react"
 
-export default function LoginPage() {
+export default function SignupPage() {
   const router = useRouter()
   const [userId, setUserId] = useState("")
   const [password, setPassword] = useState("")
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    router.push("/document")
+    router.push("/")
   }
 
   return (
     <main className="min-h-screen flex items-center justify-center bg-background">
       <div className="w-full max-w-sm rounded-lg border p-6 shadow-sm bg-card text-center">
-        <h1 className="text-3xl font-semibold mb-4">로그인</h1>
+        <h1 className="text-3xl font-semibold mb-4">계정 만들기</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2 text-left">
             <label htmlFor="email" className="text-sm font-medium leading-none">이메일</label>
@@ -41,14 +41,14 @@ export default function LoginPage() {
               onChange={(e) => setPassword(e.target.value)}
               className="flex h-9 w-full rounded-md border bg-background px-3 py-1 text-sm shadow-sm outline-none ring-offset-background placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               placeholder="••••••••"
-              autoComplete="current-password"
+              autoComplete="new-password"
             />
           </div>
           <button
             type="submit"
             className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow h-9 px-4 py-2 w-full"
           >
-            Login
+            회원가입
           </button>
           <button
             type="button"
@@ -64,11 +64,10 @@ export default function LoginPage() {
             Google로 계속하기
           </button>
           <p className="text-xs text-muted-foreground text-center">
-            아직 계정이 없나요? <Link href="/signup" className="underline hover:no-underline">회원가입</Link>
+            이미 계정이 있나요? <Link href="/" className="underline hover:no-underline">로그인</Link>
           </p>
         </form>
       </div>
     </main>
   )
 }
-
